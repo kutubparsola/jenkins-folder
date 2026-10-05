@@ -8,7 +8,7 @@ pipeline{
             when{
                 allOf{ //all of the following condition should be true
                     branch "master"
-                    environment name: "ENV" , value :"prod"
+                    environment name: "ENV" , value :"production"
                     tag "release-*"
                 }
             }
@@ -17,4 +17,4 @@ pipeline{
             }
         }
     }
-}
+} 
