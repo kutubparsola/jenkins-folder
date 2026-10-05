@@ -1,0 +1,11 @@
+pipeline{
+    agent none
+
+    stages{
+        stage("build stage"){
+            steps{
+            echo "buildin the artifacts"
+            }
+        }
+    }
+}
