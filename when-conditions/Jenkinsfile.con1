@@ -1,0 +1,16 @@
+pipeline{
+    agent none
+    parameters{
+        choice(name:"BRANCH",choices:["aws-ci","kubernetes","main","master"],description:"chossing branches")
+    }
+    stages{
+        stage('build'){
+            when{
+                expression{params.BRANCH!="master"}
+            }
+            steps{
+                echo "branch is  not master its ${params.BRANCH}"
+                }
+            }
+        }
+    }

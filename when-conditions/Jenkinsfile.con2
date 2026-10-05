@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    environment{
+        ENV='production'
+    }
+    stages{
+        stage('build'){
+            when{
+                allOf{ //all of the following condition should be true
+                    branch "master"
+                    environment name: "ENV" , value :"prod"
+                    tag "release-*"
+                }
+            }
+            steps{
+                echo "running in productio  env"
+            }
+        }
+    }
+}
