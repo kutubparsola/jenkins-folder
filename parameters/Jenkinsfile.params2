@@ -1,0 +1,20 @@
+pipeline{
+    agent none
+    parameters{
+        booleanParam(name:"checkin",defaultValue: true,description: "checking the running of the pipeline") //remember its not default here its defaultValue and it caps p in Param
+    }
+    stages{
+        stage("build"){
+            steps{
+                script{
+                    if(params.checkin){
+                        echo "you checked tru that's why this block is running"
+                    }
+                    else{
+                        echo "you checked false block"
+                    }
+                }
+            }
+        }
+    }
+}

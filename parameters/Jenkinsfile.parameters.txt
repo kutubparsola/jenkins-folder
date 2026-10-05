@@ -1,0 +1,13 @@
+pipeline{
+    agent any 
+    parameters{
+        choice(name:"environment",choices:["production","test","QA"],description:"deciding the prod en")
+    }
+    stages{
+        stage("build"){
+            steps{
+                echo "building in the ${params.environment} environment"
+            }
+        }
+    }
+}

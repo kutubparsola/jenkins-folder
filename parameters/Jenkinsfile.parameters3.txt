@@ -1,0 +1,19 @@
+pipeline{
+    agent none
+    parameters{
+        text(name:"branch-name",defaultValue:"main",description:"running test on branch")
+    }
+    stages{
+        stage("test"){
+            steps{
+                echo "running test on ${branch-name} branch"
+            }
+            post{
+                always{
+                    echo "huhhhh done with testing"
+                }
+            }
+        }
+            
+    }
+}
