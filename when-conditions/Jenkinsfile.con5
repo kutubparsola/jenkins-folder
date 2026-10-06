@@ -1,9 +1,11 @@
 pipeline {
-    agent none
+    agent any
+   
     stages {
         stage('Build') {
             when {
-                changelog ".*build.*"
+                // Matches "build", "Build", "BUILD", etc., anywhere in commit message
+                changelog "(?i).*build.*"
             }
             steps {
                 echo 'This stage ran because "build" was found in your commit message.'
