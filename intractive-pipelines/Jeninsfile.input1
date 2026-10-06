@@ -1,0 +1,14 @@
+pipeline{
+    agent any 
+    stages{
+        stage('test 1'){
+            input{
+                message "ready to run test??"
+                ok "yes"
+            }
+            steps{
+                echo "here we run the test on your machine"
+            }
+        }
+    }
+}

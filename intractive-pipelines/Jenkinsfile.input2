@@ -1,0 +1,19 @@
+pipeline{
+    agent any 
+    stages{
+        stage('build'){
+            input{
+                message "should we proceed?"
+                ok "yes"
+                submitter "kutbuddin,admin,managers" //restrict the deploying users to these 4 only only these 4 can click yes
+                submittersParameter "SUBMITTER_USERNAME" // this is a variable which register the name of user which initiated the pipeline
+            }
+            steps{
+                echo "running the block"
+            }
+        }
+
+    }
+}
+
+//despite the fact if you remove the "admin" from the list it will still run because here you are system admin and sys admin bypass all the security in the company if you do so it wont work so .....

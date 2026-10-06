@@ -1,0 +1,24 @@
+pipeline{
+    agent{
+        label "linux"
+        docker{
+            alpine
+        }
+    }
+    options{
+        newContainerPerStage()
+    }
+    stages{
+        stage('con1'){
+            steps{
+            echo "i am runing in the sep container"
+            }
+        }
+    
+        stage('con2'){
+            steps{
+            echo "i am runing in the sep container"
+            }
+        }
+    }
+}
