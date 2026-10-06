@@ -11,3 +11,5 @@ pipeline{
         }
     }
 }
+//in the machine/node where you are running make sure you download "docker.io" there
+// download the docker plugins(docker pipeline)
