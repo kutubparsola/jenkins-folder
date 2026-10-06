@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('build'){
             when{
-                buildingTag()
+                buildingTag() //if the changes are commit with any tag then only this job will run 
             }
             steps{
                 echo 'you added a tag thats why this block triggered'
