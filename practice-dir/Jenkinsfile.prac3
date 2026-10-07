@@ -15,6 +15,7 @@ pipeline {
                         // Single-quoted sh block uses single quotes '...' so Groovy doesn't interpolate variables.
                         // Bash evaluates $HOST and $PASS directly at execution time.
                         sh '''
+
                             echo "Connecting to database server at: $HOST"
                             # Jenkins automatically masks $PASS in logs as ****
                             echo "Database authentication parameter set for user database session."
@@ -25,3 +26,6 @@ pipeline {
         }
     }
 }
+//remember the sh block is also within the script block all of it is in single quote soi that no queries can be injected now what happen in double quotes is when you pass suppose "kutbuddin, rm -rf" this is taken as cmd injection which will wipe out whole sysytem on the other hand in single qoutes it prevent this ad take input as string without converting it into cmds
+
+//withenv is a block where it takes the variable use it and destroy it within the block itself 
