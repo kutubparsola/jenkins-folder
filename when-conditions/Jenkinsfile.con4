@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('build'){
             when{
-                equals(actual: currentBuild.number, expected:4)
+                equals(actual: currentBuild.number, expected:4) //when the current job build number equals to the the expected build no. then only this block will run
             }
             steps{
                 echo "building stage"
