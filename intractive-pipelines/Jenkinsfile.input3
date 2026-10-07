@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    stages{
+        stage('test'){
+            input{
+                message "shall we deploy"
+                ok "awkhayyy"
+                parameters{
+                    string(name: "ENV" , defaultValue: "production" )
+                }
+            }
+            steps{
+                echo " running test in ${ENV} environment"
+            }
+        }
+    }
+}

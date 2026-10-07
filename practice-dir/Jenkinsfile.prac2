@@ -1,0 +1,24 @@
+pipeline{
+    agent any 
+    parameters{
+        string(name: "APP_VERSION",trim: true, defaultValue: "1.0.1",description: "checking the Application version")
+        text(name: "follow_text",defaultValue:"line A: features added \n line B : bufig error" , description: "adding the text")
+    }
+    stages{
+        stage('deploy'){
+            steps{
+                script{
+                if(params.APP_VERSION == null || params.APP_VERSION.isEmpty()){
+                    error "BUILD FAILED: cant build it with specified app version"
+                }
+                echo "====================="
+                echo "building app_version ${APP_VERSION}"
+                echo "====================="
+                echo "releasing notes"
+                echo "====================="
+                echo "${params.follow_text}"
+                }
+            }
+        }
+    }
+}

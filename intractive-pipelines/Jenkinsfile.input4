@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    stages{
+        stage('test'){
+            input{
+                message "ready to deploy?"
+                ok "yes"
+                submitter "admin"
+            }
+            steps{
+                echo "running the tests"
+            }
+        }
+    }
+}

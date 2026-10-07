@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: "DB_HOST", defaultValue: "localhost", trim: true, description: "Database hostname")
+        password(name: "DB_PASS", defaultValue: "mySecret123", description: "Database password")
+    }
+
+    stages {
+        stage("Database Check") {
+            steps {
+                script {
+                    // Safely binding parameters as temporary Environment Variables for the shell block
+                    withEnv(["HOST=${params.DB_HOST}", "PASS=${params.DB_PASS}"]) {
+                        // Single-quoted sh block uses single quotes '...' so Groovy doesn't interpolate variables.
+                        // Bash evaluates $HOST and $PASS directly at execution time.
+                        sh '''
+                            echo "Connecting to database server at: $HOST"
+                            # Jenkins automatically masks $PASS in logs as ****
+                            echo "Database authentication parameter set for user database session."
+                        '''
+                    }
+                }
+            }
+        }
+    }
+}

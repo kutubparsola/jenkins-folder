@@ -1,0 +1,30 @@
+pipeline{
+    agent any 
+    parameters{
+        choice(name:"environment",choices:["dev","staging","prod"],description:"practice")
+        booleanParam(name:"RUN_TEST",defaultValue: true ,description:"practicing")
+    }
+    stages{
+        stage('run tests'){
+            when{
+                expression {params.RUN_TEST == true}
+            }
+            steps{
+                echo "block running because it passed runtest parameter"
+            }
+        }
+        stage('deploy') {
+            steps {
+                script {
+                    if (params.environment == "prod") {
+                        echo "Deploying to Production with extra safety checks!"
+                    } 
+                    else {
+                        echo "Deploying to ${params.environment} environment."
+                    }
+                }
+            }
+        }
+    }
+}
+
