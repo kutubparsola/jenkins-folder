@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    triggers {
+        cron "H H * * *" //at any random hour and minute once a day
+        // cron "* * * * *" //every min 
+        // cron "0 * * * *" // zero minute of every hour eg 2:00, 3:00
+        // cron "0 0 * * *" // in the midnight 00:00
+        // cron "0 0 * 2,4,6,8,10,12 *" //at midnight everday in on the 2,4,6,8... day of month
+        // cron "* 1-7 * * *" //every munite from 1:00 to till 7:59
+        // cron "*/10 * * * *" //runs in every 10 min
+        // cron "H H(0-4) * * *" //this schedule will run exactly once a day, at a fixed time hashed by Jenkins between 12:00 AM and 4:59 AM (for example, every night at 2:23 AM).
+    }
+    stages {
+        stage("Test") {
+            steps {
+                echo "Hello World!"
+            }
+        }
+    }
+}
+
+//syntax:- "minutes hours day_of_month month day_of_week"

@@ -1,0 +1,12 @@
+pipeline{
+    agent any 
+    stages{
+        stage('build'){
+            steps{
+                echo isUnix()?  "its a unix machine!":"its a windows based machine"
+            }
+        }
+    }
+}
+//remember isUni() is a function so paranthsis is a must
+// how this works it asks whether the machine is unix or not if yes then "its a unix machine!" will execute else the other one will execute in our case which is "its a windows based machine"

@@ -1,0 +1,21 @@
+pipeline{
+    agent any 
+    stages{
+        stage('does that dir exist?'){
+            steps{
+                script{
+                    if(fileExists('sample')){
+                        echo 'file exists'
+                        readFile('sample')
+                    }
+                    else{
+                        echo "file does'nt exist creating it"
+                        writeFile(file:'sample',text:"hello world!!!!")
+                    }
+                }
+            }
+        }
+    }
+}
+
+//remember that the if-else con comes under the script block

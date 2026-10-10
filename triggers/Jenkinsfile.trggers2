@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    triggers {
+        pollSCM "*/10 * * * *"
+    }
+    stages {
+        stage("Test") {
+            steps {
+                echo "Hello World!"
+            }
+        }
+    }
+}
+
+// cron triggers a build automatically based on the clock, regardless of whether code changed.
+
+// pollSCM checks your source code repository (e.g., Git) on the schedule you set and only triggers a build if new commits are detected.

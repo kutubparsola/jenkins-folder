@@ -1,0 +1,16 @@
+pipeline{
+    agent any
+    stages{
+        stage('build'){
+            steps{
+                dir('sample'){
+                    echo pwd()
+                }
+                dir(pwd(tmp: true)){
+                    echo "we are in tmp dir of current working dir"
+                    echo pwd()
+                }
+            }
+        }
+    }
+}

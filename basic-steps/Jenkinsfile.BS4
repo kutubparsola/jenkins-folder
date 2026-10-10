@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        stage("Test") {
+            steps {
+                retry(10) {
+                    sleep(5)
+                    timeout(time: 3, unit: "SECONDS") {
+                        sh "python mysqlcheck.py"
+                    }
+                }
+            }
+        }
+    }
+}
+
+// retry(10): Tells Jenkins to re-run the enclosed block up to 10 times if any step inside throws an error.
+
+// sleep(5): Pauses execution for 5 seconds.
+
+// timeout(time: 3, unit: "SECONDS"): Forces whatever is inside its block to finish within 3 seconds.
+
+// sh "python mysqlcheck.py": Executes your python database check script.
