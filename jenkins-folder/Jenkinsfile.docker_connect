@@ -1,6 +1,6 @@
 pipeline{
     agent{
-        docker "alpine"
+        docker "alpine" //Once Jenkins finds an available worker node with the "linux" label, it uses that node's Docker daemon to spin up the alpine container. From that point on, all the stages and steps defined in the pipeline execute inside that isolated Alpine Docker container, rather than directly on the host operating system of the Linux node.
         label "linux"
     }
     stages{
